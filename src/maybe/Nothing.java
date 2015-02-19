@@ -62,6 +62,6 @@ public class Nothing<A> implements Maybe<A> {
 
     // Unsafe operations:
     public A fromMaybe() {
-        throw new Exercise();
+        throw new RuntimeException("Don't use this.");
     }
 }
