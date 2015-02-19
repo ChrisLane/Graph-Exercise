@@ -8,7 +8,7 @@ package maybe;
 
 import java.lang.Integer;
 
-public class SampleUsage {
+class SampleUsage {
 
   // We begin by doing something people often do, but that it is
   // unsafe and the cause of several programming errors, and hence
@@ -37,7 +37,7 @@ public class SampleUsage {
   }
 
   // A better-engineered solution is to use the Maybe type.
-  static <A> Maybe<A> find(Predicate<A> p, A [] as) {
+  private static <A> Maybe<A> find(Predicate<A> p, A[] as) {
     // Find just an element of the array as satisfying the predicate p,
     // if such an element exists, and nothing otherwise.
     for (A a : as) {

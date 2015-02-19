@@ -1,5 +1,5 @@
 // DO NOT MODIFY this file.
-// Any modification will incurr into the mark zero for the whole exercise.
+// Any modification will incur into the mark zero for the whole exercise.
 
 package maybe;
 
@@ -10,18 +10,18 @@ package maybe;
  */
 
 public interface Maybe<A> {
-  public boolean isNothing();
-  public int     size();         
-  public boolean has(A a);            
+  boolean isNothing();
+  int     size();
+  boolean has(A a);
   // Higher-order methods:
-  public Maybe<A> filter(Predicate<A> p);     
-  public <B> Maybe<B> map(Function<A,B> f);   
-  public <B> B fold(Function<A,B> f, B b); 
-  public boolean all(Predicate<A> p);         
-  public boolean some(Predicate<A> p);       
-  public void forEach(Action<A> a);          
+  Maybe<A> filter(Predicate<A> p);
+  <B> Maybe<B> map(Function<A, B> f);
+  <B> B fold(Function<A, B> f, B b);
+  boolean all(Predicate<A> p);
+  boolean some(Predicate<A> p);
+  void forEach(Action<A> a);
 // Unsafe operation, which should not be used (or even offered in this interface).
-  public A fromMaybe();  
+A fromMaybe();
   // A method cases is not needed, because in this case it is the same as fold.
 } 
 

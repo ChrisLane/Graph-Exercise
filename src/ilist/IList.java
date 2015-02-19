@@ -7,29 +7,29 @@ package ilist;
  */
 
 public interface IList<A> {
-  public boolean isEmpty();           // Is the list empty?
-  public int     size();              // Returns the number of elements of the list.
-  public IList<A> reverse();          // Returns a reversed copy of the list.
-  public IList<A> append(IList<A> l); // Returns a new list with the list l appended.
-  public IList<A> append(A a);        // Returns a new list with the element a appended.
-  public boolean has(A a);            // Is the value a an element of the list?
+  boolean isEmpty();           // Is the list empty?
+  int     size();              // Returns the number of elements of the list.
+  IList<A> reverse();          // Returns a reversed copy of the list.
+  IList<A> append(IList<A> l); // Returns a new list with the list l appended.
+  IList<A> append(A a);        // Returns a new list with the element a appended.
+  boolean has(A a);            // Is the value a an element of the list?
   // Higher-order methods:
-  public IList<A> filter(Predicate<A> p);     // Gets the sublist of elements satisfying the predicate.
-  public <B> IList<B> map(Function<A,B> f);   // Applies a function to each element of the list.
-  public <B> B fold(Function2<A,B,B> f, B b); // Like in Ocaml, Haskell, and any functional laguage.
-  public boolean all(Predicate<A> p);         // Do all elements of the list satisfy the predicate p?
-  public boolean some(Predicate<A> p);        // Does some element of the list satisfy the predicate p?
-  public void forEach(Action<A> a);           // Applies an action (like printing) to each element of the list.
+  IList<A> filter(Predicate<A> p);     // Gets the sublist of elements satisfying the predicate.
+  <B> IList<B> map(Function<A, B> f);   // Applies a function to each element of the list.
+  <B> B fold(Function2<A, B, B> f, B b); // Like in Ocaml, Haskell, and any functional laguage.
+  boolean all(Predicate<A> p);         // Do all elements of the list satisfy the predicate p?
+  boolean some(Predicate<A> p);        // Does some element of the list satisfy the predicate p?
+  void forEach(Action<A> a);           // Applies an action (like printing) to each element of the list.
   // Unsafe operations:
-  public A head();                  // Gets the head of a non-empty list.
-  public IList<A> tail();           // Gets the tail of a non-empty list.
+  A head();                  // Gets the head of a non-empty list.
+  IList<A> tail();           // Gets the tail of a non-empty list.
                                     // Both throw an exception for the empty list.
   // Safe:
-  public <B> B cases(B b, Function2<A,IList<A>,B> f); // Performs case analysis empty/non-empty.
+                                    <B> B cases(B b, Function2<A, IList<A>, B> f); // Performs case analysis empty/non-empty.
 } 
 
-// The comments in the above interface are *intensions*.  The compiler
-// doesn't check that these intensions are fulfilled in an
+// The comments in the above interface are *intentions*.  The compiler
+// doesn't check that these intentions are fulfilled in an
 // implementation of this interface.  This is something the programmer
 // (who cares to read the comments providing a specification of what
 // is intended) has to make sure are fulfilled.  Checking that an
@@ -56,7 +56,7 @@ public interface IList<A> {
  new Cons<Integer>(1,new Cons<Integer>(2,new Cons<Integer>(3,new Nil<Integer>())));
 
  For the sake of brevity, the toString method produces the string
- "Cons(1,Cons(2,Cons(3,Nil)))" for this list (in ocaml-like syntax).
+ "Cons(1,Cons(2,Cons(3,Nil)))" for this list (in Ocaml-like syntax).
 
  This is an instance of the "composite pattern", because we have one
  interface for lists, but two class implementations, one for each case

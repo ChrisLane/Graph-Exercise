@@ -5,7 +5,7 @@ package ilist;
 
 import java.lang.Integer;
 
-public class SampleUsage {
+class SampleUsage {
     
   public static void main(String[] args) {
     // The list [1,2,3] = Cons(1, Cons(2, Cons(3, Nil)))
