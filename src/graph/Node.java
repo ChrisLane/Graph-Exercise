@@ -5,8 +5,6 @@ import maybe.Just;
 import maybe.Maybe;
 import maybe.Nothing;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Stack;
 import java.util.function.Predicate;
 
