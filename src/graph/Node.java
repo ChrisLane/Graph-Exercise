@@ -1,12 +1,6 @@
 package graph;
 
 import ilist.IList;
-import maybe.Just;
-import maybe.Maybe;
-import maybe.Nothing;
-
-import java.util.Stack;
-import java.util.function.Predicate;
 
 public class Node<A> {
     private A nodeContent;
@@ -31,19 +25,5 @@ public class Node<A> {
 
     public void setSuccessors(IList<Node<A>> successors) {
         this.successors = successors;
-    }
-
-    public Maybe<Node<A>> findNodeFrom(Node<A> x, Predicate<A> p) {
-        Stack<Node<A>> stack = new Stack<>();
-
-        stack.push(x);
-
-        while (!stack.isEmpty()) {
-            Node<A> current = stack.pop();
-
-            if (current == p)
-                return new Just<>(current);
-        }
-        return new Nothing<>();
     }
 }
