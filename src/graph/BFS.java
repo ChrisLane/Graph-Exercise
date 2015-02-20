@@ -5,7 +5,7 @@ import maybe.Maybe;
 import maybe.Nothing;
 
 import java.util.ArrayDeque;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Queue;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -13,7 +13,7 @@ import java.util.function.Predicate;
 public class BFS<A> {
 
     public Maybe<Node<A>> findNodeFrom(Node<A> x, Predicate<A> p) {
-        Set<Node<A>> visited = new HashSet<>();
+        Set<Node<A>> visited = new LinkedHashSet<>();
         Queue<Node<A>> queue = new ArrayDeque<>();
 
         queue.add(x);
