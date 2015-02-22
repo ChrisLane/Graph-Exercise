@@ -1,12 +1,3 @@
-// WHAT (NOT) TO DO:
-// -------------------
-// REPLACE the "Exercise" lines with code (possibly empty code).
-// LEAVE ALONE the "Exercise" lines for parts you are not solving.
-//
-// To get any marks for the whole exercise, your submission should
-// compile using the "compile" script. Submissions that don't compile
-// won't get any marks.
-
 package maybe;
 
 /**
