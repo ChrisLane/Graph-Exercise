@@ -32,11 +32,11 @@ public class Cons<A> implements IList<A> {
     }
 
     public IList<A> append(IList<A> l) {
-        return new Cons<>(head, tail.append(l));
+        return new Cons<A>(head, tail.append(l));
     }
 
     public IList<A> append(A e) {
-        return append(new Cons<>(e, new Nil<A>()));
+        return append(new Cons<A>(e, new Nil<A>()));
     }
 
     public IList<A> reverse() {
@@ -58,7 +58,7 @@ public class Cons<A> implements IList<A> {
 
     public IList<A> filter(Predicate<A> p) {
         if (p.holds(head)) {
-            return new Cons<>(head, tail.filter(p));
+            return new Cons<A>(head, tail.filter(p));
         } else {
             return tail.filter(p);
         }
@@ -73,7 +73,7 @@ public class Cons<A> implements IList<A> {
     return result;
     */
 
-        return new Cons<>(f.apply(head), tail.map(f));
+        return new Cons<B>(f.apply(head), tail.map(f));
     }
 
     public <B> B fold(Function2<A, B, B> f, B b) {

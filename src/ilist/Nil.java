@@ -28,7 +28,7 @@ public class Nil<A> implements IList<A> {
     }
 
     public IList<A> append(A a) {
-        return new Cons<>(a, this);
+        return new Cons<A>(a, this);
     }
 
     public IList<A> reverse() {
@@ -46,7 +46,7 @@ public class Nil<A> implements IList<A> {
     }
 
     public <B> IList<B> map(Function<A, B> f) {
-        return new Nil<>();
+        return new Nil<B>();
     }
 
     public <B> B fold(Function2<A, B, B> f, B b) {

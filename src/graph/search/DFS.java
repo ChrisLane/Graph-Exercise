@@ -1,5 +1,7 @@
 package graph.search;
 
+import graph.Coordinate;
+import graph.Graph;
 import graph.Node;
 import maybe.Just;
 import maybe.Maybe;
@@ -11,6 +13,22 @@ import java.util.Stack;
 import java.util.function.Predicate;
 
 public class DFS<A> {
+
+    public static void main(String args[]) {
+        Graph<Coordinate> graph = new Graph<Coordinate>();
+        Coordinate startPos = new Coordinate(0, 0);
+        final Coordinate goalPos = new Coordinate(1, 1);
+        Node<Coordinate> x = graph.nodeWith(startPos);
+        Predicate<Coordinate> p = new Predicate<Coordinate>() {
+            @Override
+            public boolean test(Coordinate f) {
+                return f.equals(goalPos);
+            }
+        };
+
+        DFS<Coordinate> dfs = new DFS<Coordinate>();
+        System.out.println(dfs.findNodeFrom(x, p));
+    }
 
     public Maybe<Node<A>> findNodeFrom(Node<A> x, Predicate<A> p) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();

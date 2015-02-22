@@ -42,14 +42,14 @@ public class Just<A> implements Maybe<A> {
 
     public Maybe<A> filter(Predicate<A> p) {
         if (p.holds(something)) {
-            return new Just<>(something);
+            return new Just<A>(something);
         } else {
-            return new Nothing<>();
+            return new Nothing<A>();
         }
     }
 
     public <B> Maybe<B> map(Function<A, B> f) {
-        return new Just<>(f.apply(something));
+        return new Just<B>(f.apply(something));
     }
 
     public <B> B fold(Function<A, B> f, B b) {

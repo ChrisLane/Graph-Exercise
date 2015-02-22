@@ -42,7 +42,7 @@ public class Nothing<A> implements Maybe<A> {
     }
 
     public <B> Maybe<B> map(Function<A, B> f) {
-        return new Nothing<>();
+        return new Nothing<B>();
     }
 
     public <B> B fold(Function<A, B> f, B b) {
