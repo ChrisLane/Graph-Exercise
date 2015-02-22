@@ -16,7 +16,7 @@ public class DFS<A> {
 
     public static void main(String args[]) {
         Graph<Coordinate> graph = new Graph<Coordinate>();
-        Coordinate startPos = new Coordinate(1, 1);
+        final Coordinate startPos = new Coordinate(1, 1);
         final Coordinate goalPos = new Coordinate(1, 2);
         Node<Coordinate> x = graph.nodeWith(startPos);
         Predicate<Coordinate> p = new Predicate<Coordinate>() {
