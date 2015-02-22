@@ -6,12 +6,12 @@ import graph.Node;
 import maybe.Just;
 import maybe.Maybe;
 import maybe.Nothing;
+import maybe.Predicate;
 
 import java.util.ArrayDeque;
 import java.util.LinkedHashSet;
 import java.util.Queue;
 import java.util.Set;
-import java.util.function.Predicate;
 
 public class BFS<A> {
 
@@ -22,7 +22,7 @@ public class BFS<A> {
         Node<Coordinate> x = graph.nodeWith(startPos);
         Predicate<Coordinate> p = new Predicate<Coordinate>() {
             @Override
-            public boolean test(Coordinate f) {
+            public boolean holds(Coordinate f) {
                 return f.equals(goalPos);
             }
         };
@@ -32,6 +32,7 @@ public class BFS<A> {
     }
 
     public Maybe<Node<A>> findNodeFrom(Node<A> x, Predicate<A> p) {
+
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         Queue<Node<A>> queue = new ArrayDeque<Node<A>>();
 
@@ -41,11 +42,11 @@ public class BFS<A> {
             Node<A> current = queue.poll();
 
             if (visited.contains(current)) {
-                if (current.getContents() == p)
+                if (p.holds(current.getContents()))
                     return new Just<Node<A>>(current);
                 visited.add(current);
-                for (int i = 0; i < current.getSuccessors().size(); i++) {
-                    queue.add((Node<A>) current.getSuccessors());
+                for (Node<A> successor : current.getSuccessors()) {
+                    queue.add(successor);
                 }
             }
         }

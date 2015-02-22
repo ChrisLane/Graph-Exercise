@@ -6,11 +6,11 @@ import graph.Node;
 import maybe.Just;
 import maybe.Maybe;
 import maybe.Nothing;
+import maybe.Predicate;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.Stack;
-import java.util.function.Predicate;
 
 public class DFS<A> {
 
@@ -21,7 +21,7 @@ public class DFS<A> {
         Node<Coordinate> x = graph.nodeWith(startPos);
         Predicate<Coordinate> p = new Predicate<Coordinate>() {
             @Override
-            public boolean test(Coordinate f) {
+            public boolean holds(Coordinate f) {
                 return f.equals(goalPos);
             }
         };
@@ -40,11 +40,11 @@ public class DFS<A> {
             Node<A> current = stack.pop();
 
             if (visited.contains(current)) {
-                if (current.getContents() == p)
+                if (p.holds(current.getContents()))
                     return new Just<Node<A>>(current);
                 visited.add(current);
-                for (int i = 0; i < current.getSuccessors().size(); i++) {
-                    stack.push((Node<A>) current.getSuccessors());
+                for (Node<A> successor : current.getSuccessors()) {
+                    stack.add(successor);
                 }
             }
         }

@@ -3,6 +3,6 @@
 
 package maybe;
 
-interface Predicate<A> {
+public interface Predicate<A> {
     boolean holds(A a);
 }
