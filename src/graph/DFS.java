@@ -12,8 +12,8 @@ import java.util.function.Predicate;
 public class DFS<A> {
 
     public Maybe<Node<A>> findNodeFrom(Node<A> x, Predicate<A> p) {
-        Set<Node<A>> visited = new LinkedHashSet<>();
-        Stack<Node<A>> stack = new Stack<>();
+        Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
+        Stack<Node<A>> stack = new Stack<Node<A>>();
 
         stack.push(x);
 
@@ -21,14 +21,14 @@ public class DFS<A> {
             Node<A> current = stack.pop();
 
             if (visited.contains(current)) {
-                if (current.getNodeContent() == p)
-                    return new Just<>(current);
+                if (current.getContents() == p)
+                    return new Just<Node<A>>(current);
                 visited.add(current);
                 for (int i = 0; i < current.getSuccessors().size(); i++) {
-                    stack.push(current.getSuccessors().head());
+                    stack.push((Node<A>) current.getSuccessors());
                 }
             }
         }
-        return new Nothing<>();
+        return new Nothing<Node<A>>();
     }
 }

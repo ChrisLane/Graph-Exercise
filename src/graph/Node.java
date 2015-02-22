@@ -1,29 +1,41 @@
 package graph;
 
-import ilist.IList;
+// Minimal class for a particular implementation of directed graphs.
+// All we include is what is necessary to build a graph, in the class
+// graph.
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class Node<A> {
-    private A nodeContent;
-    private IList<Node<A>> successors;
 
-    public Node(A nodeContent, IList<Node<A>> successors) {
-        this.nodeContent = nodeContent;
-        this.successors = successors;
+    private A contents;
+    // Keep the implementation of sets open, by using the Set interface:
+    private Set<Node<A>> successors;
+
+    // We can only build a node with an empty set of getSuccessors:
+    public Node(A contents) {
+        this.contents = contents;
+        // Choose any implementation of sets you please, but you need to
+        // choose one.
+        this.successors = new LinkedHashSet<Node<A>>();
     }
 
-    public A getNodeContent() {
-        return nodeContent;
+    // Hence we need this:
+    public void addSuccessor(Node<A> s) {
+        successors.add(s);
     }
 
-    public void setNodeContent(A nodeContent) {
-        this.nodeContent = nodeContent;
+    public boolean contentsEquals(A c) {
+        return contents.equals(c);
     }
 
-    public IList<Node<A>> getSuccessors() {
+    // Get methods:
+    public A getContents() {
+        return contents;
+    }
+
+    public Set<Node<A>> getSuccessors() {
         return successors;
-    }
-
-    public void setSuccessors(IList<Node<A>> successors) {
-        this.successors = successors;
     }
 }
