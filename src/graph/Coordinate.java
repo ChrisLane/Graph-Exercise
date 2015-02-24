@@ -26,4 +26,9 @@ public class Coordinate {
         // "return 0;" works, but having all data to have the same hash
         // code defeats the idea of hash tables and make them inefficient.
     }
+
+    @Override
+    public String toString() {
+        return "[Coordinate] " + x + ", " + y;
+    }
 }

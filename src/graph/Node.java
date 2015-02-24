@@ -38,4 +38,9 @@ public class Node<A> {
     public Set<Node<A>> getSuccessors() {
         return successors;
     }
+
+    @Override
+    public String toString() {
+        return "[Node] " + contents.toString();
+    }
 }

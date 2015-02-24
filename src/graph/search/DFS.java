@@ -15,7 +15,7 @@ import java.util.Stack;
 public class DFS<A> {
 
     public static void main(String args[]) {
-        Graph<Coordinate> graph = new Graph<Coordinate>();
+        Graph<Coordinate> graph = Graph.getGraph();
         final Coordinate startPos = new Coordinate(1, 1);
         final Coordinate goalPos = new Coordinate(5, 5);
         Node<Coordinate> x = graph.nodeWith(startPos);
@@ -39,7 +39,7 @@ public class DFS<A> {
         while (!stack.isEmpty()) {
             Node<A> current = stack.pop();
 
-            if (visited.contains(current)) {
+            if (!visited.contains(current)) {
                 if (p.holds(current.getContents()))
                     return new Just<Node<A>>(current);
                 visited.add(current);
