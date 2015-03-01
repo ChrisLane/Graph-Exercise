@@ -11,7 +11,9 @@ import maybe.Maybe;
 import maybe.Nothing;
 import maybe.Predicate;
 
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.Stack;
 
 public class DFS<A> {
 

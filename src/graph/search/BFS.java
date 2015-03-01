@@ -11,7 +11,10 @@ import maybe.Maybe;
 import maybe.Nothing;
 import maybe.Predicate;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.LinkedHashSet;
+import java.util.Queue;
+import java.util.Set;
 
 public class BFS<A> {
 
