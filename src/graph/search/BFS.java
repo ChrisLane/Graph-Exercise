@@ -47,21 +47,21 @@ public class BFS<A> {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         Queue<Node<A>> queue = new ArrayDeque<Node<A>>();
 
-        queue.add(x);
+        queue.add(x); // Add the starting node of the graph to the queue
 
         while (!queue.isEmpty()) {
             Node<A> current = queue.poll();
 
             if (!visited.contains(current)) {
                 if (p.holds(current.getContents()))
-                    return new Just<Node<A>>(current);
+                    return new Just<Node<A>>(current); // Return node matching the predicate
                 visited.add(current);
                 for (Node<A> successor : current.getSuccessors()) {
                     queue.add(successor);
                 }
             }
         }
-        return new Nothing<Node<A>>();
+        return new Nothing<Node<A>>(); // No node found matching the predicate so return nothing
     }
 
     /**
@@ -76,7 +76,7 @@ public class BFS<A> {
         Queue<Node<A>> queue = new ArrayDeque<Node<A>>();
         IList<Node<A>> path = new Nil<Node<A>>();
 
-        queue.add(x);
+        queue.add(x); // Add the starting node of the graph to the queue
 
         while (!queue.isEmpty()) {
             Node<A> current = queue.poll();
@@ -84,13 +84,13 @@ public class BFS<A> {
             if (!visited.contains(current)) {
                 path = new Cons<Node<A>>(current, path);
                 if (p.holds(current.getContents()))
-                    return new Just<IList<Node<A>>>(path.reverse());
+                    return new Just<IList<Node<A>>>(path.reverse()); // Return node matching the predicate
                 visited.add(current);
                 for (Node<A> successor : current.getSuccessors()) {
                     queue.add(successor);
                 }
             }
         }
-        return new Nothing<IList<Node<A>>>();
+        return new Nothing<IList<Node<A>>>(); // No node found matching the predicate so return nothing
     }
 }

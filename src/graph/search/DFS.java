@@ -45,21 +45,21 @@ public class DFS<A> {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         Stack<Node<A>> stack = new Stack<Node<A>>();
 
-        stack.push(x);
+        stack.push(x); // Add the starting node of the graph to the queue
 
         while (!stack.isEmpty()) {
             Node<A> current = stack.pop();
 
             if (!visited.contains(current)) {
                 if (p.holds(current.getContents()))
-                    return new Just<Node<A>>(current);
+                    return new Just<Node<A>>(current); // Return node matching the predicate
                 visited.add(current);
                 for (Node<A> successor : current.getSuccessors()) {
                     stack.add(successor);
                 }
             }
         }
-        return new Nothing<Node<A>>();
+        return new Nothing<Node<A>>(); // No node found matching the predicate so return nothing
     }
 
     /**
@@ -74,7 +74,7 @@ public class DFS<A> {
         Stack<Node<A>> stack = new Stack<Node<A>>();
         IList<Node<A>> path = new Nil<Node<A>>();
 
-        stack.push(x);
+        stack.push(x); // Add the starting node of the graph to the queue
 
         while (!stack.isEmpty()) {
             Node<A> current = stack.pop();
@@ -82,14 +82,14 @@ public class DFS<A> {
             if (!visited.contains(current)) {
                 path = new Cons<Node<A>>(current, path);
                 if (p.holds(current.getContents()))
-                    return new Just<IList<Node<A>>>(path.reverse());
+                    return new Just<IList<Node<A>>>(path.reverse()); // Return node matching the predicate
                 visited.add(current);
                 for (Node<A> successor : current.getSuccessors()) {
                     stack.add(successor);
                 }
             }
         }
-        return new Nothing<IList<Node<A>>>();
+        return new Nothing<IList<Node<A>>>(); // No node found matching the predicate so return nothing
     }
 }
 
