@@ -80,7 +80,7 @@ public class DFS<A> {
             Node<A> current = stack.pop();
 
             if (!visited.contains(current)) {
-                path = new Cons<Node<A>>(current, path);
+                path = new Cons<Node<A>>(current, path); // Add the current node to the path
                 if (p.holds(current.getContents()))
                     return new Just<IList<Node<A>>>(path.reverse()); // Return node matching the predicate
                 visited.add(current);
