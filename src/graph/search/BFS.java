@@ -35,6 +35,13 @@ public class BFS<A> {
         System.out.println(bfs.findPathFrom(x, p));
     }
 
+    /**
+     * Finds a given goal node in the form of predicate p from starting node x of a graph
+     *
+     * @param x The node of a graph to start the search from
+     * @param p The predicate that must be met for a node to be returned
+     * @return The node that matches the predicate p found from x if one was found
+     */
     public Maybe<Node<A>> findNodeFrom(Node<A> x, Predicate<A> p) {
 
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
@@ -57,6 +64,13 @@ public class BFS<A> {
         return new Nothing<Node<A>>();
     }
 
+    /**
+     * Finds and returns the path to a node matching predicate p found from node x of a graph
+     *
+     * @param x The node of a graph to start the search from
+     * @param p The predicate that must be met for a node to be returned
+     * @return The path to a node that matches the predicate p found from x if one was found
+     */
     public Maybe<IList<Node<A>>> findPathFrom(Node<A> x, Predicate<A> p) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         Queue<Node<A>> queue = new ArrayDeque<Node<A>>();

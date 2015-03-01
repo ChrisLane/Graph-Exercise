@@ -108,6 +108,9 @@ public class Graph<A> {
         }
     }
 
+    /**
+     * Generates the default "nick's graph"
+     */
     public static void generateGraph() {
         defaultGraph = new Graph<Coordinate>();
 
@@ -140,6 +143,11 @@ public class Graph<A> {
         }
     }
 
+    /**
+     * Returns the default "nick's graph"
+     *
+     * @return The default "nick's graph"
+     */
     public static Graph<Coordinate> getGraph() {
         if (defaultGraph == null)
             generateGraph();
