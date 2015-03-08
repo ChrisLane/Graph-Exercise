@@ -11,17 +11,16 @@ import maybe.Maybe;
 import maybe.Nothing;
 import maybe.Predicate;
 
-import java.util.ArrayDeque;
 import java.util.LinkedHashSet;
-import java.util.Queue;
 import java.util.Set;
+import java.util.Stack;
 
-public class BFS<A> {
+public class DepthFirst<A> {
 
     public static void main(String args[]) {
         Graph<Coordinate> graph = Graph.getGraph();
-        final Coordinate startPos = new Coordinate(0, 0);
-        final Coordinate goalPos = new Coordinate(1, 1);
+        final Coordinate startPos = new Coordinate(1, 1);
+        final Coordinate goalPos = new Coordinate(5, 5);
         Node<Coordinate> x = graph.nodeWith(startPos);
         Predicate<Coordinate> p = new Predicate<Coordinate>() {
             @Override
@@ -30,9 +29,9 @@ public class BFS<A> {
             }
         };
 
-        BFS<Coordinate> bfs = new BFS<Coordinate>();
-        System.out.println(bfs.findNodeFrom(x, p));
-        System.out.println(bfs.findPathFrom(x, p));
+        DepthFirst<Coordinate> depthFirst = new DepthFirst<Coordinate>();
+        System.out.println(depthFirst.findNodeFrom(x, p));
+        System.out.println(depthFirst.findPathFrom(x, p));
     }
 
     /**
@@ -43,21 +42,20 @@ public class BFS<A> {
      * @return The node that matches the predicate p found from x if one was found
      */
     public Maybe<Node<A>> findNodeFrom(Node<A> x, Predicate<A> p) {
-
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
-        Queue<Node<A>> queue = new ArrayDeque<Node<A>>();
+        Stack<Node<A>> stack = new Stack<Node<A>>();
 
-        queue.add(x); // Add the starting node of the graph to the queue
+        stack.push(x); // Add the starting node of the graph to the queue
 
-        while (!queue.isEmpty()) {
-            Node<A> current = queue.poll();
+        while (!stack.isEmpty()) {
+            Node<A> current = stack.pop();
 
             if (!visited.contains(current)) {
                 if (p.holds(current.getContents()))
                     return new Just<Node<A>>(current); // Return node matching the predicate
                 visited.add(current);
                 for (Node<A> successor : current.getSuccessors()) {
-                    queue.add(successor);
+                    stack.add(successor);
                 }
             }
         }
@@ -73,13 +71,13 @@ public class BFS<A> {
      */
     public Maybe<IList<Node<A>>> findPathFrom(Node<A> x, Predicate<A> p) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
-        Queue<Node<A>> queue = new ArrayDeque<Node<A>>();
+        Stack<Node<A>> stack = new Stack<Node<A>>();
         IList<Node<A>> path = new Nil<Node<A>>();
 
-        queue.add(x); // Add the starting node of the graph to the queue
+        stack.push(x); // Add the starting node of the graph to the queue
 
-        while (!queue.isEmpty()) {
-            Node<A> current = queue.poll();
+        while (!stack.isEmpty()) {
+            Node<A> current = stack.pop();
 
             if (!visited.contains(current)) {
                 path = new Cons<Node<A>>(current, path); // Add the current node to the path
@@ -87,10 +85,11 @@ public class BFS<A> {
                     return new Just<IList<Node<A>>>(path.reverse()); // Return node matching the predicate
                 visited.add(current);
                 for (Node<A> successor : current.getSuccessors()) {
-                    queue.add(successor);
+                    stack.add(successor);
                 }
             }
         }
         return new Nothing<IList<Node<A>>>(); // No node found matching the predicate so return nothing
     }
 }
+
