@@ -21,7 +21,7 @@ public class BreadthFirst<A> {
     public static void main(String args[]) {
         Graph<Coordinate> graph = Graph.getGraph();
         final Coordinate startPos = new Coordinate(0, 0);
-        final Coordinate goalPos = new Coordinate(1, 1);
+        final Coordinate goalPos = new Coordinate(5, 5);
         Node<Coordinate> x = graph.nodeWith(startPos);
         Predicate<Coordinate> p = new Predicate<Coordinate>() {
             @Override
