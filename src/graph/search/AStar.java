@@ -5,7 +5,7 @@ import graph.Graph;
 import graph.Node;
 import graph.search.functions.Distance;
 import graph.search.functions.Heuristic;
-import graph.search.functions.PriorityQueueComparer;
+import graph.search.functions.PriorityQueueCompare;
 import ilist.Cons;
 import ilist.IList;
 import ilist.Nil;
@@ -34,7 +34,7 @@ public class AStar<A> {
 
     public Maybe<Node<A>> findNodeFrom(Graph graph, Node<A> startPos, Node<A> goalPos, Heuristic heuristicFunction, Distance distanceFunction) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
-        Queue<Node<A>> pending = new PriorityQueue<Node<A>>(new PriorityQueueComparer<A>());
+        Queue<Node<A>> pending = new PriorityQueue<Node<A>>(new PriorityQueueCompare<A>());
 
         startPos.setHeuristic(heuristicFunction.apply(startPos, goalPos));
         startPos.setCost(0);
@@ -46,7 +46,7 @@ public class AStar<A> {
 
             if (!visited.contains(current)) {
 
-                if (current.getContents().equals(goalPos.getContents()))
+                if (current.contentsEquals(goalPos.getContents()))
                     return new Just<Node<A>>(current);
                 visited.add(current);
 
@@ -65,7 +65,7 @@ public class AStar<A> {
 
     public Maybe<IList<Node<A>>> findPathFrom(Graph graph, Node<A> startPos, Node<A> goalPos, Heuristic heuristicFunction, Distance distanceFunction) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
-        Queue<Node<A>> pending = new PriorityQueue<Node<A>>(new PriorityQueueComparer<A>());
+        Queue<Node<A>> pending = new PriorityQueue<Node<A>>(new PriorityQueueCompare<A>());
         IList<Node<A>> path = new Nil<Node<A>>();
 
         startPos.setHeuristic(heuristicFunction.apply(startPos, goalPos));
@@ -79,8 +79,11 @@ public class AStar<A> {
             if (!visited.contains(current)) {
                 path = new Cons<Node<A>>(current, path);
 
-                if (current.getContents().equals(goalPos.getContents()))
+                if (current.contentsEquals(goalPos.getContents())) {
+                    System.out.println(path.size());
                     return new Just<IList<Node<A>>>(path.reverse());
+                }
+
                 visited.add(current);
 
                 for (Node<A> successor : current.getSuccessors()) {

@@ -83,9 +83,14 @@ public class BreadthFirst<A> {
 
             if (!visited.contains(current)) {
                 path = new Cons<Node<A>>(current, path); // Add the current node to the path
-                if (p.holds(current.getContents()))
+
+                if (p.holds(current.getContents())) {
+                    System.out.println(path.size());
                     return new Just<IList<Node<A>>>(path.reverse()); // Return node matching the predicate
+                }
+
                 visited.add(current);
+
                 for (Node<A> successor : current.getSuccessors()) {
                     queue.add(successor);
                 }

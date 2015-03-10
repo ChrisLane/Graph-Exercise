@@ -42,6 +42,7 @@ public class DepthFirst<A> {
      * @return The node that matches the predicate p found from x if one was found
      */
     public Maybe<Node<A>> findNodeFrom(Node<A> x, Predicate<A> p) {
+
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         Stack<Node<A>> stack = new Stack<Node<A>>();
 
@@ -81,9 +82,14 @@ public class DepthFirst<A> {
 
             if (!visited.contains(current)) {
                 path = new Cons<Node<A>>(current, path); // Add the current node to the path
-                if (p.holds(current.getContents()))
+
+                if (p.holds(current.getContents())) {
+                    System.out.println(path.size());
                     return new Just<IList<Node<A>>>(path.reverse()); // Return node matching the predicate
+                }
+
                 visited.add(current);
+
                 for (Node<A> successor : current.getSuccessors()) {
                     stack.add(successor);
                 }
@@ -92,4 +98,3 @@ public class DepthFirst<A> {
         return new Nothing<IList<Node<A>>>(); // No node found matching the predicate so return nothing
     }
 }
-

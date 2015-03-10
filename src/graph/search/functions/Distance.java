@@ -6,13 +6,13 @@ import ilist.Function2;
 
 
 public interface Distance<A> extends Function2<Node<A>, Node<A>, Double> {
-    public static final Distance<Coordinate> manhattan = new Distance<Coordinate>() {
+    Distance<Coordinate> manhattan = new Distance<Coordinate>() {
         @Override
         public Double apply(Node<Coordinate> a, Node<Coordinate> b) {
-            return (double) (a.getContents().x - b.getContents().x + a.getContents().y - b.getContents().y);
+            return (double) Math.abs(a.getContents().x - b.getContents().x) + Math.abs(a.getContents().y - b.getContents().y);
         }
     };
 
     @Override
-    public Double apply(Node<A> a, Node<A> b);
+    Double apply(Node<A> a, Node<A> b);
 }
