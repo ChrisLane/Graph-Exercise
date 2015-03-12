@@ -32,7 +32,7 @@ public class AStar<A> {
         System.out.println(aStar.findPathFrom(graph, startPos, goalPos, Heuristic.manhattan, Distance.manhattan));
     }
 
-    public Maybe<Node<A>> findNodeFrom(Graph graph, Node<A> startPos, Node<A> goalPos, Heuristic heuristicFunction, Distance distanceFunction) {
+    public Maybe<Node<A>> findNodeFrom(Graph<Coordinate> graph, Node<A> startPos, Node<A> goalPos, Heuristic heuristicFunction, Distance distanceFunction) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         Queue<Node<A>> pending = new PriorityQueue<Node<A>>(new PriorityQueueCompare<A>());
 
@@ -63,7 +63,7 @@ public class AStar<A> {
         return new Nothing<Node<A>>();
     }
 
-    public Maybe<IList<Node<A>>> findPathFrom(Graph graph, Node<A> startPos, Node<A> goalPos, Heuristic heuristicFunction, Distance distanceFunction) {
+    public Maybe<IList<Node<A>>> findPathFrom(Graph<Coordinate> graph, Node<A> startPos, Node<A> goalPos, Heuristic heuristicFunction, Distance distanceFunction) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         Queue<Node<A>> pending = new PriorityQueue<Node<A>>(new PriorityQueueCompare<A>());
         IList<Node<A>> path = new Nil<Node<A>>();
