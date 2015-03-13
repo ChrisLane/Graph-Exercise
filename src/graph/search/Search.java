@@ -35,7 +35,7 @@ public class Search<A> {
         return new Nothing<Node<A>>(); // No node found matching the predicate so return nothing
     }
 
-    public Maybe<IList<Node<A>>> findPathFrom(Node<A> starPos, Node<A> goalPos,StorageType nextToUse) {
+    public Maybe<IList<Node<A>>> findPathFrom(Node<A> starPos, Node<A> goalPos, StorageType nextToUse) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         IList<Node<A>> path = new Nil<Node<A>>();
 
