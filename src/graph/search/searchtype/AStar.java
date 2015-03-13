@@ -17,10 +17,10 @@ public class AStar<A> {
     }
 
     public Maybe<Node<A>> findNodeFrom(Node<A> startPos, Node<A> goalPos) {
-        return new Search().findNodeFrom(startPos, goalPos, searchPriorityQueue, Heuristic.manhattan, Distance.manhattan);
+        return new Search().findNodeFrom(startPos, goalPos, searchPriorityQueue, Heuristic.euclidean, Distance.manhattan);
     }
 
     public Maybe<Node<A>> findPathFrom(Node<A> startPos, Node<A> goalPos) {
-        return new Search().findPathFrom(startPos, goalPos, searchPriorityQueue, Heuristic.manhattan, Distance.manhattan);
+        return new Search().findPathFrom(startPos, goalPos, searchPriorityQueue, Heuristic.euclidean, Distance.manhattan);
     }
 }

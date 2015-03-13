@@ -12,7 +12,7 @@ public interface Heuristic<A> extends Function2<Node<A>, Node<A>, Double> {
         }
     };
 
-    Heuristic<Coordinate> manhattan = new Heuristic<Coordinate>() {
+    Heuristic<Coordinate> euclidean = new Heuristic<Coordinate>() {
         @Override
         public Double apply(Node<Coordinate> a, Node<Coordinate> b) {
             return Math.sqrt((a.getContents().x - b.getContents().x) ^ 2 + ((a.getContents().y - b.getContents().y ^ 2)));
