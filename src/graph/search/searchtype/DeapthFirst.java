@@ -1,6 +1,5 @@
 package graph.search.searchtype;
 
-import graph.Coordinate;
 import graph.Node;
 import graph.search.Search;
 import graph.search.datatype.SearchStack;
@@ -19,11 +18,11 @@ public class DeapthFirst<A> {
 
     }
 
-    public Maybe<Node<A>> findNodeFrom(Node<Coordinate> startPos, Node<Coordinate> goalPos) {
+    public Maybe<Node<A>> findNodeFrom(Node<A> startPos, Node<A> goalPos) {
         return new Search().findNodeFrom(startPos, goalPos, searchStack);
     }
 
-    public Maybe<Node<A>> findPathFrom(Node<Coordinate> startPos, Node<Coordinate> goalPos) {
+    public Maybe<Node<A>> findPathFrom(Node<A> startPos, Node<A> goalPos) {
         return new Search().findPathFrom(startPos, goalPos, searchStack);
     }
 }

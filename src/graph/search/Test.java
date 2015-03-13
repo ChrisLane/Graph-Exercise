@@ -10,10 +10,10 @@ public class Test {
     public static void main(String[] args) {
 
         Graph<Coordinate> graph = Graph.getGraph();
-        final Coordinate startCoord = new Coordinate(0, 0);
-        final Coordinate goalCoord = new Coordinate(5, 5);
-        final Node<Coordinate> startPos = graph.nodeWith(startCoord);
-        final Node<Coordinate> goalPos = graph.nodeWith(goalCoord);
+        Coordinate startCoord = new Coordinate(0, 0);
+        Coordinate goalCoord = new Coordinate(5, 5);
+        Node<Coordinate> startPos = graph.nodeWith(startCoord);
+        Node<Coordinate> goalPos = graph.nodeWith(goalCoord);
         BreadthFirst breadthFirst = new BreadthFirst();
         DeapthFirst deapthFirst = new DeapthFirst();
 
