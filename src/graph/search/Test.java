@@ -4,7 +4,7 @@ import graph.Coordinate;
 import graph.Graph;
 import graph.Node;
 import graph.search.searchtype.BreadthFirst;
-import graph.search.searchtype.DeapthFirst;
+import graph.search.searchtype.DepthFirst;
 
 public class Test {
     public static void main(String[] args) {
@@ -15,12 +15,12 @@ public class Test {
         Node<Coordinate> startPos = graph.nodeWith(startCoord);
         Node<Coordinate> goalPos = graph.nodeWith(goalCoord);
         BreadthFirst breadthFirst = new BreadthFirst();
-        DeapthFirst deapthFirst = new DeapthFirst();
+        DepthFirst depthFirst = new DepthFirst();
 
         System.out.println(breadthFirst.findNodeFrom(startPos, goalPos));
         System.out.println(breadthFirst.findPathFrom(startPos, goalPos));
         System.out.println();
-        System.out.println(deapthFirst.findNodeFrom(startPos, goalPos));
-        System.out.println(deapthFirst.findPathFrom(startPos, goalPos));
+        System.out.println(depthFirst.findNodeFrom(startPos, goalPos));
+        System.out.println(depthFirst.findPathFrom(startPos, goalPos));
     }
 }
