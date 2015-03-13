@@ -19,6 +19,9 @@ public class Search<A> {
     public Maybe<Node<A>> findNodeFrom(Node<A> startPos, Node<A> goalPos, StorageType nextToUse, Heuristic heuristic, Distance distance) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
 
+        if (startPos.contentsEquals(goalPos.getContents()))
+            return new Nothing<Node<A>>();
+
         startPos.setHeuristic(heuristic.apply(startPos, goalPos)); // Apply heuristic to initial position
         startPos.setCost(0); // First position will always have a cost of zero
 
