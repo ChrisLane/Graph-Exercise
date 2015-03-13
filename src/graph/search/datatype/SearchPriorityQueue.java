@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class SearchPriorityQueue<A> implements StorageType {
-    Queue<Node<A>> priorityQueue;
+    final Queue<Node<A>> priorityQueue;
 
     public SearchPriorityQueue(Comparator comparator) {
         priorityQueue = new PriorityQueue<Node<A>>(comparator);
