@@ -3,8 +3,6 @@ package graph.search;
 import graph.Coordinate;
 import graph.Graph;
 import graph.Node;
-import graph.search.function.Distance;
-import graph.search.function.Heuristic;
 import graph.search.searchtype.AStar;
 import graph.search.searchtype.BreadthFirst;
 import graph.search.searchtype.DepthFirst;
@@ -34,8 +32,8 @@ public class Test {
             System.out.println(depthFirst.findNodeFrom(startPos, goalPos));
             System.out.println(depthFirst.findPathFrom(startPos, goalPos));
         } else if (searchType.equalsIgnoreCase("astar")) {
-            System.out.println(aStar.findNodeFrom(startPos, goalPos, Heuristic.manhattan, Distance.manhattan));
-            System.out.println(aStar.findPathFrom(startPos, goalPos, Heuristic.manhattan, Distance.manhattan));
+            System.out.println(aStar.findNodeFrom(startPos, goalPos));
+            System.out.println(aStar.findPathFrom(startPos, goalPos));
         }
     }
 }

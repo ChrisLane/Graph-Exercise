@@ -8,7 +8,7 @@ public class SearchStack<A> implements StorageType {
     final Stack<Node<A>> stack;
 
     public SearchStack() {
-        this.stack = new Stack<Node<A>>();
+        stack = new Stack<Node<A>>();
     }
 
     @Override
@@ -24,5 +24,10 @@ public class SearchStack<A> implements StorageType {
     @Override
     public boolean isEmpty() {
         return stack.isEmpty();
+    }
+
+    @Override
+    public boolean contains(Node element) {
+        return stack.contains(element);
     }
 }

@@ -6,6 +6,13 @@ import ilist.Function2;
 
 
 public interface Distance<A> extends Function2<Node<A>, Node<A>, Double> {
+    Distance<Coordinate> none = new Distance<Coordinate>() {
+        @Override
+        public Double apply(Node<Coordinate> a, Node<Coordinate> b) {
+            return 0.0;
+        }
+    };
+
     Distance<Coordinate> manhattan = new Distance<Coordinate>() {
         @Override
         public Double apply(Node<Coordinate> a, Node<Coordinate> b) {

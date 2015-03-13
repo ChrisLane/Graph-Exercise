@@ -9,7 +9,7 @@ public class SearchQueue<A> implements StorageType {
     final Queue<Node<A>> queue;
 
     public SearchQueue() {
-        this.queue = new ArrayDeque<Node<A>>();
+        queue = new ArrayDeque<Node<A>>();
     }
 
     @Override
@@ -25,5 +25,10 @@ public class SearchQueue<A> implements StorageType {
     @Override
     public boolean isEmpty() {
         return queue.isEmpty();
+    }
+
+    @Override
+    public boolean contains(Node element) {
+        return queue.contains(element);
     }
 }

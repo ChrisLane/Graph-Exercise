@@ -9,4 +9,6 @@ public interface StorageType<A> {
     void add(Node<A> element);
 
     boolean isEmpty();
+
+    boolean contains(Node<A> element);
 }

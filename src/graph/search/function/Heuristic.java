@@ -5,6 +5,13 @@ import graph.Node;
 import ilist.Function2;
 
 public interface Heuristic<A> extends Function2<Node<A>, Node<A>, Double> {
+    Heuristic<Coordinate> none = new Heuristic<Coordinate>() {
+        @Override
+        public Double apply(Node<Coordinate> a, Node<Coordinate> b) {
+            return 0.0;
+        }
+    };
+
     Heuristic<Coordinate> manhattan = new Heuristic<Coordinate>() {
         @Override
         public Double apply(Node<Coordinate> a, Node<Coordinate> b) {
