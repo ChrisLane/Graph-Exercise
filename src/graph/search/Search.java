@@ -34,14 +34,14 @@ public class Search<A> {
         return new Nothing<Node<A>>(); // No node found matching the predicate so return nothing
     }
 
-    public Maybe<IList<Node<A>>> findPathFrom(Node<A> starPos, Node<A> goalPos, StorageType nextToUse) {
+    public Maybe<IList<Node<A>>> findPathFrom(Node<A> startPos, Node<A> goalPos, StorageType nextToUse) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         IList<Node<A>> path = new Nil<Node<A>>();
 
-        if (starPos.contentsEquals(goalPos.getContents()))
+        if (startPos.contentsEquals(goalPos.getContents()))
             return new Nothing<IList<Node<A>>>();
 
-        nextToUse.add(starPos); // Add the starting node of the graph to the queue
+        nextToUse.add(startPos); // Add the starting node of the graph to the queue
 
         while (!nextToUse.isEmpty()) {
             Node<A> current = nextToUse.getHead();
