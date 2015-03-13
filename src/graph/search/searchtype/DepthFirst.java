@@ -7,7 +7,7 @@ import maybe.Maybe;
 
 public class DepthFirst<A> {
 
-    SearchStack<Node<A>> searchStack;
+    final SearchStack<Node<A>> searchStack;
 
     public DepthFirst() {
         searchStack = new SearchStack<Node<A>>();

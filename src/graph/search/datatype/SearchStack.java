@@ -5,7 +5,7 @@ import graph.Node;
 import java.util.Stack;
 
 public class SearchStack<A> implements StorageType {
-    Stack<Node<A>> stack;
+    final Stack<Node<A>> stack;
 
     public SearchStack() {
         this.stack = new Stack<Node<A>>();

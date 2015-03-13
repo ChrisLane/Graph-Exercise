@@ -6,7 +6,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class SearchQueue<A> implements StorageType {
-    Queue<Node<A>> queue;
+    final Queue<Node<A>> queue;
 
     public SearchQueue() {
         this.queue = new ArrayDeque<Node<A>>();

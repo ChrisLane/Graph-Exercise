@@ -7,7 +7,7 @@ import maybe.Maybe;
 
 public class BreadthFirst<A> {
 
-    SearchQueue<Node<A>> searchQueue;
+    final SearchQueue<Node<A>> searchQueue;
 
     public BreadthFirst() {
         searchQueue = new SearchQueue();

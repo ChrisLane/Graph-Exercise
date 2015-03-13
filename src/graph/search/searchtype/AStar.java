@@ -28,11 +28,11 @@ public class AStar<A> {
         final Node<Coordinate> goalPos = graph.nodeWith(goalCoord);
 
         AStar<Coordinate> aStar = new AStar<Coordinate>();
-        System.out.println(aStar.findNodeFrom(graph, startPos, goalPos, Heuristic.manhattan, Distance.manhattan));
-        System.out.println(aStar.findPathFrom(graph, startPos, goalPos, Heuristic.manhattan, Distance.manhattan));
+        System.out.println(aStar.findNodeFrom(startPos, goalPos, Heuristic.manhattan, Distance.manhattan));
+        System.out.println(aStar.findPathFrom(startPos, goalPos, Heuristic.manhattan, Distance.manhattan));
     }
 
-    public Maybe<Node<A>> findNodeFrom(Graph<Coordinate> graph, Node<A> startPos, Node<A> goalPos, Heuristic heuristicFunction, Distance distanceFunction) {
+    public Maybe<Node<A>> findNodeFrom(Node<A> startPos, Node<A> goalPos, Heuristic heuristicFunction, Distance distanceFunction) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         Queue<Node<A>> pending = new PriorityQueue<Node<A>>(new PriorityQueueCompare<A>());
 
@@ -63,7 +63,7 @@ public class AStar<A> {
         return new Nothing<Node<A>>();
     }
 
-    public Maybe<IList<Node<A>>> findPathFrom(Graph<Coordinate> graph, Node<A> startPos, Node<A> goalPos, Heuristic heuristicFunction, Distance distanceFunction) {
+    public Maybe<IList<Node<A>>> findPathFrom(Node<A> startPos, Node<A> goalPos, Heuristic heuristicFunction, Distance distanceFunction) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         Queue<Node<A>> pending = new PriorityQueue<Node<A>>(new PriorityQueueCompare<A>());
         IList<Node<A>> path = new Nil<Node<A>>();

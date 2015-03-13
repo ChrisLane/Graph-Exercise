@@ -9,9 +9,9 @@ import java.util.Set;
 
 public class Node<A> {
 
-    private A contents;
+    private final A contents;
     // Keep the implementation of sets open, by using the Set interface:
-    private Set<Node<A>> successors;
+    private final Set<Node<A>> successors;
 
     private double heuristic;
     private double cost;
