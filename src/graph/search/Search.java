@@ -43,20 +43,20 @@ public class Search<A> {
 
         nextToUse.add(startPos); // Add the starting node of the graph to the queue
 
-        while (!nextToUse.isEmpty()) {
+        while (!nextToUse.isEmpty()) { // Run until there's no other nodes to check
             Node<A> current = nextToUse.getHead();
 
             if (!visited.contains(current)) {
                 path = new Cons<Node<A>>(current, path); // Add the current node to the path
 
                 if (current.contentsEquals(goalPos.getContents())) {
-                    return new Just<IList<Node<A>>>(path.reverse()); // Return node matching the predicate
+                    return new Just<IList<Node<A>>>(path.reverse()); // Return node matching the goal
                 }
 
-                visited.add(current);
+                visited.add(current); // Add node to visited so that it's not checked again
 
                 for (Node<A> successor : current.getSuccessors()) {
-                    nextToUse.add(successor);
+                    nextToUse.add(successor); // Add successors to the current node to the queue to be checked
                 }
             }
         }

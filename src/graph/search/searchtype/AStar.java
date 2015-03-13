@@ -36,31 +36,30 @@ public class AStar<A> {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         Queue<Node<A>> pending = new PriorityQueue<Node<A>>(new PriorityQueueCompare<A>());
 
-        startPos.setHeuristic(heuristicFunction.apply(startPos, goalPos));
-        startPos.setCost(0);
+        startPos.setHeuristic(heuristicFunction.apply(startPos, goalPos)); // Apply heuristic to initial position
+        startPos.setCost(0); // First position will always have a cost of zero
 
-        pending.add(startPos);
+        pending.add(startPos); // Add the starting node of the graph to the queue
 
-        while (!pending.isEmpty()) {
+        while (!pending.isEmpty()) { // Run until there's no other nodes to check
             Node<A> current = pending.poll();
 
             if (!visited.contains(current)) {
 
                 if (current.contentsEquals(goalPos.getContents()))
-                    return new Just<Node<A>>(current);
-                visited.add(current);
+                    return new Just<Node<A>>(current); // Return node matching the goal
+                visited.add(current); // Add node to visited so that it's not checked again
 
                 for (Node<A> successor : current.getSuccessors()) {
                     if (!pending.contains(successor)) {
-                        double cost = current.getCost() + distanceFunction.apply(current, successor);
-                        successor.setHeuristic(heuristicFunction.apply(successor, goalPos));
-                        successor.setCost(cost);
-                        pending.add(successor);
+                        successor.setCost(current.getCost() + distanceFunction.apply(current, successor)); // Calculate and set the cost of traveling from current to successor
+                        successor.setHeuristic(heuristicFunction.apply(successor, goalPos)); // Set the heuristic value to the successor for traveling to the goal
+                        pending.add(successor); // Add successors to the current node to the queue to be checked
                     }
                 }
             }
         }
-        return new Nothing<Node<A>>();
+        return new Nothing<Node<A>>(); // No node found matching goal
     }
 
     public Maybe<IList<Node<A>>> findPathFrom(Node<A> startPos, Node<A> goalPos, Heuristic heuristicFunction, Distance distanceFunction) {
@@ -71,33 +70,32 @@ public class AStar<A> {
         if (startPos.contentsEquals(goalPos.getContents()))
             return new Nothing<IList<Node<A>>>();
 
-        startPos.setHeuristic(heuristicFunction.apply(startPos, goalPos)); // Apply the
-        startPos.setCost(0);
+        startPos.setHeuristic(heuristicFunction.apply(startPos, goalPos)); // Apply heuristic to initial position
+        startPos.setCost(0); // First position will always have a cost of zero
 
-        pending.add(startPos);
+        pending.add(startPos); // Add the starting node of the graph to the queue
 
-        while (!pending.isEmpty()) {
+        while (!pending.isEmpty()) { // Run until there's no other nodes to check
             Node<A> current = pending.poll();
 
             if (!visited.contains(current)) {
-                path = new Cons<Node<A>>(current, path);
+                path = new Cons<Node<A>>(current, path); // Add the current node to the path
 
                 if (current.contentsEquals(goalPos.getContents())) {
-                    return new Just<IList<Node<A>>>(path.reverse());
+                    return new Just<IList<Node<A>>>(path.reverse()); // Return path since we've reached the goal
                 }
 
-                visited.add(current);
+                visited.add(current); // Add node to visited so that it's not checked again
 
                 for (Node<A> successor : current.getSuccessors()) {
                     if (!pending.contains(successor)) {
-                        double cost = current.getCost() + distanceFunction.apply(current, successor);
-                        successor.setHeuristic(heuristicFunction.apply(successor, goalPos));
-                        successor.setCost(cost);
-                        pending.add(successor);
+                        successor.setCost(current.getCost() + distanceFunction.apply(current, successor)); // Calculate and set the cost of traveling from current to successor
+                        successor.setHeuristic(heuristicFunction.apply(successor, goalPos)); // Set the heuristic value to the successor for traveling to the goal
+                        pending.add(successor); // Add successors to the current node to the queue to be checked
                     }
                 }
             }
         }
-        return new Nothing<IList<Node<A>>>();
+        return new Nothing<IList<Node<A>>>(); // No path found, return a path of Nothing
     }
 }
