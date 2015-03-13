@@ -9,6 +9,8 @@ import graph.search.searchtype.AStar;
 import graph.search.searchtype.BreadthFirst;
 import graph.search.searchtype.DepthFirst;
 
+import javax.swing.*;
+
 public class Test {
     public static void main(String[] args) {
 
@@ -22,13 +24,18 @@ public class Test {
         DepthFirst depthFirst = new DepthFirst();
         AStar aStar = new AStar();
 
-        System.out.println(breadthFirst.findNodeFrom(startPos, goalPos));
-        System.out.println(breadthFirst.findPathFrom(startPos, goalPos));
-        System.out.println();
-        System.out.println(depthFirst.findNodeFrom(startPos, goalPos));
-        System.out.println(depthFirst.findPathFrom(startPos, goalPos));
-        System.out.println();
-        System.out.println(aStar.findNodeFrom(startPos, goalPos, Heuristic.manhattan, Distance.manhattan));
-        System.out.println(aStar.findPathFrom(startPos, goalPos, Heuristic.manhattan, Distance.manhattan));
+
+        String searchType = JOptionPane.showInputDialog("Enter search type");
+
+        if (searchType.equalsIgnoreCase("breadth")) {
+            System.out.println(breadthFirst.findNodeFrom(startPos, goalPos));
+            System.out.println(breadthFirst.findPathFrom(startPos, goalPos));
+        } else if (searchType.equalsIgnoreCase("depth")) {
+            System.out.println(depthFirst.findNodeFrom(startPos, goalPos));
+            System.out.println(depthFirst.findPathFrom(startPos, goalPos));
+        } else if (searchType.equalsIgnoreCase("astar")) {
+            System.out.println(aStar.findNodeFrom(startPos, goalPos, Heuristic.manhattan, Distance.manhattan));
+            System.out.println(aStar.findPathFrom(startPos, goalPos, Heuristic.manhattan, Distance.manhattan));
+        }
     }
 }
