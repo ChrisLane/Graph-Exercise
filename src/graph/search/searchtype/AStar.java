@@ -68,7 +68,10 @@ public class AStar<A> {
         Queue<Node<A>> pending = new PriorityQueue<Node<A>>(new PriorityQueueCompare<A>());
         IList<Node<A>> path = new Nil<Node<A>>();
 
-        startPos.setHeuristic(heuristicFunction.apply(startPos, goalPos));
+        if (startPos.contentsEquals(goalPos.getContents()))
+            return new Nothing<IList<Node<A>>>();
+
+        startPos.setHeuristic(heuristicFunction.apply(startPos, goalPos)); // Apply the
         startPos.setCost(0);
 
         pending.add(startPos);
