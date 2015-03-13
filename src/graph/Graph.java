@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class Graph<A> {
 
-    static Graph<Coordinate> defaultGraph;
     private static final int[][] graphData = {
             {0, 0, 1, 0, 0, 1},
             {0, 1, 0, 0, 1, 1, 0, 2},
@@ -82,6 +81,7 @@ public class Graph<A> {
             {9, 5, 8, 5, 9, 4, 9, 6},
             {9, 6, 9, 5, 8, 6}
     };
+    static Graph<Coordinate> defaultGraph;
     // Keep the implementation of maps open, by using the Map interface:
     private final Map<A, Node<A>> nodes;
 

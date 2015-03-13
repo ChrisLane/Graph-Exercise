@@ -6,11 +6,11 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class SearchPriorityQueue<A> implements StorageType{
+public class SearchPriorityQueue<A> implements StorageType {
     Queue<Node<A>> priorityQueue;
 
     public SearchPriorityQueue(Comparator comparator) {
-        priorityQueue =new PriorityQueue<Node<A>>(comparator);
+        priorityQueue = new PriorityQueue<Node<A>>(comparator);
     }
 
     @Override
