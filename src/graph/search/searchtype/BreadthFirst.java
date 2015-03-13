@@ -1,18 +1,19 @@
-package graph.search;
+package graph.search.searchtype;
 
 import graph.Coordinate;
 import graph.Node;
-import graph.search.datatypes.SearchQueue;
+import graph.search.Search;
+import graph.search.datatype.SearchQueue;
 import maybe.Maybe;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-public class BFS<A> {
+public class BreadthFirst<A> {
 
     SearchQueue<Node<A>> searchQueue;
 
-    public BFS() {
+    public BreadthFirst() {
         Queue<Node<A>> queue = new ArrayDeque<Node<A>>();
         searchQueue = new SearchQueue();
 

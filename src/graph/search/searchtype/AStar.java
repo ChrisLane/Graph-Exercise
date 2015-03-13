@@ -1,11 +1,11 @@
-package graph.search;
+package graph.search.searchtype;
 
 import graph.Coordinate;
 import graph.Graph;
 import graph.Node;
-import graph.search.functions.Distance;
-import graph.search.functions.Heuristic;
-import graph.search.functions.PriorityQueueCompare;
+import graph.search.function.Distance;
+import graph.search.function.Heuristic;
+import graph.search.function.PriorityQueueCompare;
 import ilist.Cons;
 import ilist.IList;
 import ilist.Nil;

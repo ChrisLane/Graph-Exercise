@@ -3,6 +3,8 @@ package graph.search;
 import graph.Coordinate;
 import graph.Graph;
 import graph.Node;
+import graph.search.searchtype.BreadthFirst;
+import graph.search.searchtype.DeapthFirst;
 
 public class Test {
     public static void main(String[] args) {
@@ -12,13 +14,13 @@ public class Test {
         final Coordinate goalCoord = new Coordinate(5, 5);
         final Node<Coordinate> startPos = graph.nodeWith(startCoord);
         final Node<Coordinate> goalPos = graph.nodeWith(goalCoord);
-        BFS bfs = new BFS();
-        DFS dfs = new DFS();
+        BreadthFirst breadthFirst = new BreadthFirst();
+        DeapthFirst deapthFirst = new DeapthFirst();
 
-        System.out.println(bfs.findNodeFrom(startPos, goalPos));
-        System.out.println(bfs.findPathFrom(startPos, goalPos));
+        System.out.println(breadthFirst.findNodeFrom(startPos, goalPos));
+        System.out.println(breadthFirst.findPathFrom(startPos, goalPos));
         System.out.println();
-        System.out.println(dfs.findNodeFrom(startPos, goalPos));
-        System.out.println(dfs.findPathFrom(startPos, goalPos));
+        System.out.println(deapthFirst.findNodeFrom(startPos, goalPos));
+        System.out.println(deapthFirst.findPathFrom(startPos, goalPos));
     }
 }

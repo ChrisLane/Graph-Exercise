@@ -1,7 +1,7 @@
 package graph.search;
 
 import graph.Node;
-import graph.search.datatypes.StorageType;
+import graph.search.datatype.StorageType;
 import ilist.Cons;
 import ilist.IList;
 import ilist.Nil;

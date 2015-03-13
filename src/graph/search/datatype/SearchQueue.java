@@ -1,4 +1,4 @@
-package graph.search.datatypes;
+package graph.search.datatype;
 
 import graph.Node;
 

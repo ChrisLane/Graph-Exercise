@@ -1,4 +1,4 @@
-package graph.search.functions;
+package graph.search.function;
 
 import graph.Coordinate;
 import graph.Node;
