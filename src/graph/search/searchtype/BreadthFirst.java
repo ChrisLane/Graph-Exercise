@@ -5,15 +5,11 @@ import graph.search.Search;
 import graph.search.datatype.SearchQueue;
 import maybe.Maybe;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 public class BreadthFirst<A> {
 
     SearchQueue<Node<A>> searchQueue;
 
     public BreadthFirst() {
-        Queue<Node<A>> queue = new ArrayDeque<Node<A>>();
         searchQueue = new SearchQueue();
 
     }
