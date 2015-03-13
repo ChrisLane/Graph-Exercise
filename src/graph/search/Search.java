@@ -15,7 +15,6 @@ import java.util.Set;
 public class Search<A> {
 
     public Maybe<Node<A>> findNodeFrom(Node<A> startPos, Node<A> goalPos, StorageType nextToUse) {
-
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
 
         nextToUse.add(startPos); // Add the starting node of the graph to the queue
@@ -38,6 +37,9 @@ public class Search<A> {
     public Maybe<IList<Node<A>>> findPathFrom(Node<A> starPos, Node<A> goalPos, StorageType nextToUse) {
         Set<Node<A>> visited = new LinkedHashSet<Node<A>>();
         IList<Node<A>> path = new Nil<Node<A>>();
+
+        if (starPos.contentsEquals(goalPos.getContents()))
+            return new Nothing<IList<Node<A>>>();
 
         nextToUse.add(starPos); // Add the starting node of the graph to the queue
 
