@@ -50,7 +50,6 @@ public class Search<A> {
                 path = new Cons<Node<A>>(current, path); // Add the current node to the path
 
                 if (current.contentsEquals(goalPos.getContents())) {
-                    System.out.println(path.size());
                     return new Just<IList<Node<A>>>(path.reverse()); // Return node matching the predicate
                 }
 

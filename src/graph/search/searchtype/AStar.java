@@ -80,7 +80,6 @@ public class AStar<A> {
                 path = new Cons<Node<A>>(current, path);
 
                 if (current.contentsEquals(goalPos.getContents())) {
-                    System.out.println(path.size());
                     return new Just<IList<Node<A>>>(path.reverse());
                 }
 
